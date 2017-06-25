@@ -9,7 +9,7 @@ test/
 dist/
 
 # Auto generate
-src/mcss/components.mcss
+src/mcss/components.scss
 
 # doc
 db.json
