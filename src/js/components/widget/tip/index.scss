@@ -1,0 +1,53 @@
+// Name:            Tip
+// Description:     小提示
+// Author:          sensen(rainforest92@126.com)
+// ========================================================================
+
+
+
+// Component:       `u-tip`
+// ========================================================================
+
+.u-tip {
+    display: inline-block;
+	margin-top:5px;
+    font-size: 12px;
+    padding: 0;
+    @include border-radius($border-radius-sm);
+    .u-icon {
+        vertical-align: top;
+        margin-right: 6px;
+        font-size: 15px;
+        line-height: 18px;
+    }
+    .tip {
+        vertical-align: top;
+        display: inline-block;
+        line-height: 18px;
+        &.animated {
+            animation-duration: .8s;
+            animation-timing-function: ease;
+        }
+    }
+}
+
+
+// Color Extends:
+// ========================================================================
+
+@mixin u-tip-extend_color($name, $background, $color) {
+    .u-tip-#{$name} {
+        color: $color;
+    }
+}
+
+
+
+
+// Color Extends:
+// ========================================================================
+
+@include u-tip-extend_color(info, $brand-info-lighter, $brand-info);
+@include u-tip-extend_color(success, $brand-success-lighter, $brand-success);
+@include u-tip-extend_color(warning, $brand-warning-lighter, $brand-warning);
+@include u-tip-extend_color(error, $brand-error-lighter, $brand-error);

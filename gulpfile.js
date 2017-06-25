@@ -9,14 +9,14 @@ var ignore = require('gulp-ignore');
 var minifycss = require('gulp-clean-css');
 var sequence = require('run-sequence');
 var all = require('gulp-all');
-var mcss = require('gulp_mcss');
 var glob = require('glob');
 var path = require('path');
 var Hexo = require('hexo');
 var fs = require('fs');
 var argv = require('yargs').argv;
 var doc = require('./doc/source/doc');
-var themes = require('./src/mcss/themes');
+var themes = require('./src/scss/themes');
+var sass = require('gulp-sass');
 
 var browserSync = require('browser-sync').create();
 var reload = browserSync.reload;
@@ -51,11 +51,8 @@ gulp.task('dist-js', function() {
 
 gulp.task('dist-css', function() {
   var gulpCSS = function(theme) {
-    return gulp.src('./src/mcss/' + theme + '.mcss')
-      .pipe(mcss({
-        pathes: ['./node_modules'],
-        importCSS: true
-      }))
+    return gulp.src('./src/scss/' + theme + '.scss')
+      .pipe(sass().on('error', sass.logError))
       .pipe(rename('nek-ui.' + theme + '.css'))
       .pipe(gulp.dest('./dist/css'))
       .pipe(rename({
@@ -68,13 +65,13 @@ gulp.task('dist-css', function() {
   return all(themes.map(gulpCSS));
 });
 
-gulp.task('gen-mcss', function(cb) {
-  glob(path.join(__dirname, './src/js/components/**/**/*.mcss'), function(er, files) {
+gulp.task('gen-scss', function(cb) {
+  glob(path.join(__dirname, './src/js/components/**/**/*.scss'), function(er, files) {
     var out = '';
     files.forEach(function(d) {
       out += '@import "' + d + '";\n';
     });
-    fs.writeFileSync(path.join(__dirname, './src/mcss/components.mcss'), out);
+    fs.writeFileSync(path.join(__dirname, './src/scss/components.scss'), out);
     cb();
   })
 });
@@ -91,7 +88,7 @@ gulp.task('gen-doc', function(cb) {
 });
 
 gulp.task('dist', function(done) {
-  sequence('dist-clean', ['dist-copy', 'gen-mcss', 'dist-js', 'dist-css'], done);
+  sequence('dist-clean', ['dist-copy', 'gen-scss', 'dist-js', 'dist-css'], done);
 });
 
 

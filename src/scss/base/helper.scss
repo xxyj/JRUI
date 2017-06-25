@@ -1,0 +1,135 @@
+@import 'var';
+
+
+@mixin size($width, $height: null){
+    @if $height == null {$height: $width};
+    height: $height;
+    width: $width; 
+}
+// __exmaple__:
+// div{
+//     $size: 50px
+// }
+
+
+// 不带参数, 可视为一个block模版  
+@mixin clearfix{
+    *zoom: 1;
+    &:before, &:after {
+        display: table;
+        content: "";
+        line-height: 0; 
+    }
+    &:after {
+        clear: both; 
+    }
+}
+// __example__:
+// div{
+//     @include clearfix();
+//     .left{
+//         float: left;
+//     }
+//     .right{
+//         float: right;
+//     }
+// }
+
+
+// inline-block
+@mixin inline-block{
+    display: inline-block;
+    vertical-align: baseline;
+    zoom: 1;
+    *display: inline;
+    *vertical-align: auto;
+}
+
+
+// $opa is between 0 - 1 
+@mixin opacity($opa){
+    filter:  alpha(opacity = round($opa * 100));
+    opacity: $opa;
+}
+
+// short hand $border
+@mixin border($color){
+   border: if(type-of($color) == 'color', 1px solid $color, $color); 
+}
+
+
+// 宽度超过 显示省略号, $nowrap 切换是否换行.
+@mixin txt-ellipsis($nowrap: true){
+    @if $nowrap {
+        white-space:nowrap }
+    text-overflow:ellipsis; 
+    overflow:hidden;
+}
+
+
+
+// position
+@mixin position($type){
+    position: $type;
+    @if $type == fixed {
+        _position: absolute;
+        z-index: 9999;
+    }
+}
+
+// line-height and height;
+@mixin lh($height){
+    height: $height;
+    line-height: $height; 
+}
+
+// the min-height hack for ie6
+@mixin min-height($height){
+    min-height: $height;
+    height: auto !important;
+    _height: $height;
+}
+
+
+// cross-browser display
+@mixin display($name){
+    @if $name == box {
+        display: -webkit-box;
+        display: -moz-box;
+        display: box;    
+    }@elseif $name == inline-block{
+        @include inline-block();
+    }@else{
+        display: name;
+    }
+}
+
+// !placeholder
+@mixin placeholder($block){
+    &::#{-webkit-input-placeholder, -moz-placeholder} {
+       @include block() 
+    }
+    &:#{-moz-placeholder, -ms-placeholder} {
+       @include block()
+    }
+}
+// __Example__
+// #input1{
+//   @include placeholder({
+//     color:#090; 
+//     background:#fff; 
+//     text-transform:uppercase;
+//   });
+// }
+
+
+@mixin line-height($height) {
+    height: $height;
+    line-height: $height; 
+}
+
+@mixin tab-size($tab-size_) {
+    -webkit-tab-size: $tab-size_;
+    -moz-tab-size: $tab-size_;
+    tab-size: $tab-size_;
+}

@@ -1,0 +1,66 @@
+// Name:            Panel
+// Description:     面板
+// Author:          sensen(rainforest92@126.com)
+// ========================================================================
+
+
+
+// Component:       `m-panel`
+// ========================================================================
+
+.m-panel {
+    background: white;
+    .panel_hd, .panel_ft {
+        background: $panel-header;
+        padding: 8px 10px;
+    }
+
+    .panel_hd {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: $panel-header-color;
+        border-bottom: 1px solid #e31436;
+        .tools{
+            margin-left: auto;
+        }
+        .u-btn{
+            font-size: 16px;
+            background: $panel-header;
+            border: 1px solid $panel-header;
+            .u-icon{
+                color: $panel-header-icon-color;
+                background: $panel-header;
+                border: 1px solid $panel-header;
+            }
+        }
+        .u-btn:hover{
+            border: 1px solid $panel-header;
+        }
+    }
+    .panel_ft {
+        padding:5px 10px;
+    }
+
+    .panel_bd {
+        padding: 20px 5px;
+        border: 1px solid rgb(239, 239, 239);
+        border-top:0;
+    }
+    .panel_tt { font-size:14px; font-weight:bold; }
+}
+
+// Color Extends:
+// ========================================================================
+
+@mixin m-panel-extend_color($name, $background, $color: null, $border_: null) {
+    .m-panel-#{$name} {
+        @if($border_) {border-color: $border_;}
+
+        .panel_hd {
+            background: $background;
+            @if($color) {color: $color;}
+            @if($border_) {border-color: $border_;}
+        }
+    }
+}

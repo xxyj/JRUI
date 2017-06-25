@@ -1,0 +1,96 @@
+@import 'helper.scss';
+
+
+
+/**
+ * base css3 vendor prefixr
+ * http://peter.sh/experiments/vendor-prefixed-css-property-overview/
+ * ⓘ
+ */
+
+@mixin transition-delay($value...) {-webkit-transition-delay: $value;-moz-transition-delay: $value;transition-delay: $value;}
+@mixin transition-duration($value...) {-webkit-transition-duration: $value;-moz-transition-duration: $value;transition-duration: $value;}
+@mixin transition-timing-function($value...) {-webkit-transition-timing-function: $value;-moz-transition-timing-function: $value;transition-timing-function: $value;}
+@mixin animation($value...) {-webkit-animation: $value;-moz-animation: $value;animation: $value;}
+@mixin animation-delay($value...) {-webkit-animation-delay: $value;-moz-animation-delay: $value;animation-delay: $value;}
+@mixin animation-name($value...) {-webkit-animation-name: $value;-moz-animation-name: $value;animation-name: $value;}
+@mixin animation-direction($value...) {-webkit-animation-direction: $value;-moz-animation-direction: $value;animation-direction: $value;}
+@mixin animation-duration($value...) {-webkit-animation-duration: $value;-moz-animation-duration: $value;animation-duration: $value;}
+@mixin animation-fill-mode($value...) {-webkit-animation-fill-mode: $value;-moz-animation-fill-mode: $value;animation-fill-mode: $value;}
+@mixin animation-iteration-count($value...) {-webkit-animation-iteration-count: $value;-moz-animation-iteration-count: $value;animation-iteration-count: $value;}
+@mixin animation-timing-function($value...) {-webkit-animation-timing-function: $value;-moz-animation-timing-function: $value;animation-timing-function: $value;}
+@mixin columns($value...) {-webkit-columns: $value;-moz-columns: $value;columns: $value;}
+@mixin column-count($value...) {-webkit-column-count: $value;-moz-column-count: $value;column-count: $value;}
+@mixin column-gap($value...) {-webkit-column-gap: $value;-moz-column-gap: $value;column-gap: $value;}
+@mixin column-fill($value...) {-webkit-column-fill: $value;-moz-column-fill: $value;column-fill: $value;}
+@mixin column-rule($value...) {-webkit-column-rule: $value;-moz-column-rule: $value;column-rule: $value;}
+@mixin column-rule-color($value...) {-webkit-column-rule-color: $value;-moz-column-rule-color: $value;column-rule-color: $value;}
+@mixin column-rule-style($value...) {-webkit-column-rule-style: $value;-moz-column-rule-style: $value;column-rule-style: $value;}
+@mixin column-rule-width($value...) {-webkit-column-rule-width: $value;-moz-column-rule-width: $value;column-rule-width: $value;}
+@mixin column-span($value...) {-webkit-column-span: $value;-moz-column-span: $value;column-span: $value;}
+@mixin column-width($value...) {-webkit-column-width: $value;-moz-column-width: $value;column-width: $value;}
+@mixin box-orient($value...) {-webkit-box-orient: $value;-moz-box-orient: $value;box-orient: $value;}
+@mixin box-sizing($value...) {-webkit-box-sizing: $value;-moz-box-sizing: $value;box-sizing: $value;}
+@mixin box-pack($value...) {-webkit-box-pack: $value;-moz-box-pack: $value;box-pack: $value;}
+@mixin box-align($value...) {-webkit-box-align: $value;-moz-box-align: $value;box-align: $value;}
+@mixin box-direction($value...) {-webkit-box-direction: $value;-moz-box-direction: $value;box-direction: $value;}
+@mixin box-lines($value...) {-webkit-box-lines: $value;-moz-box-lines: $value;box-lines: $value;}
+@mixin box-ordinal-group($value...) {-webkit-box-ordinal-group: $value;-moz-box-ordinal-group: $value;box-ordinal-group: $value;}
+@mixin box-flex($value...) {-webkit-box-flex: $value;-moz-box-flex: $value;box-flex: $value;}
+@mixin box-flex-group($value...) {-webkit-box-flex-group: $value;-moz-box-flex-group: $value;box-flex-group: $value;}
+@mixin box-shadow($value...) {-webkit-box-shadow: $value;-moz-box-shadow: $value;box-shadow: $value;}
+@mixin transform($value...) {-webkit-transform: $value;-moz-transform: $value;-ms-transform: $value;-o-transform: $value;transform: $value;}
+@mixin transform-origin($value...) {-webkit-transform-origin: $value;-moz-transform-origin: $value;-ms-transform-origin: $value;-o-transform-origin: $value;transform-origin: $value;}
+@mixin transform-style($value...) {-webkit-transform-style: $value;-moz-transform-style: $value;-ms-transform-style: $value;-o-transform-style: $value;transform-style: $value;}
+@mixin perspective($value...) {-webkit-perspective: $value;-moz-perspective: $value;perspective: $value;}
+@mixin perspective-origin($value...) {-webkit-perspective-origin: $value;-moz-perspective-origin: $value;perspective-origin: $value;}
+@mixin appearance($value...) {-webkit-appearance: $value;-moz-appearance: $value;-ms-appearance: $value;-o-appearance: $value;appearance: $value;}
+@mixin backface-visibility($value...) {-webkit-backface-visibility: $value;-moz-backface-visibility: $value;backface-visibility: $value;}
+@mixin background-clip($value...) {-webkit-background-clip: $value;background-clip: $value;}
+@mixin background-origin($value...) {-webkit-background-origin: $value;background-origin: $value;}
+@mixin background-size($value...) {-webkit-background-size: $value;background-size: $value;}
+@mixin border-box($value...) {-webkit-border-box: $value;-moz-border-box: $value;border-box: $value;}
+@mixin box-shadow($value...) {-webkit-box-shadow: $value;box-shadow: $value;}
+@mixin user-select($value...) {-webkit-user-select: $value;-moz-user-select: $value;-ms-user-select: $value;user-select: $value;}
+@mixin hyphens($value...) {-epub-hyphens: $value;-moz-hyphens: $value;-ms-hyphens: $value;hyphens: $value;}
+@mixin filter($value...) {-moz-filter: $value;-webkit-filter: $value;filter: $value;}
+
+
+@mixin border-radius($radius, $direction: null, $etc...) {
+    @if $direction == top {
+        -moz-border-top-left-radius: $radius;
+        border-top-left-radius: $radius;
+        -moz-border-top-right-radius: $radius;
+        border-top-right-radius: $radius;
+    } @else if $direction == bottom {
+        -moz-border-bottom-left-radius: $radius;
+        border-bottom-left-radius: $radius;
+        -moz-border-bottom-right-radius: $radius;
+        border-bottom-right-radius: $radius;
+    } @else if $direction == left {
+        -moz-border-top-left-radius: $radius;
+        border-top-left-radius: $radius;
+        -moz-border-bottom-left-radius: $radius;
+        border-bottom-left-radius: $radius;
+    } @else if $direction == right {
+        -moz-border-top-right-radius: $radius;
+        border-top-right-radius: $radius;
+        -moz-border-bottom-right-radius: $radius;
+        border-bottom-right-radius: $radius;
+    } @else {
+        -moz-border-radius: $radius $direction $etc;
+        border-radius: $radius $direction $etc;
+    }
+}
+
+@mixin transition($value...){
+  -webkit-transition: $value;
+  -moz-transition: $value;
+  transition: $value;
+}
+
+@mixin transition-property($value...){
+  -webkit-transition-property: $value;
+  -moz-transition-property: $value;
+  transition-property: $value;
+}

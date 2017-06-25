@@ -1,0 +1,797 @@
+/**
+ * 1. setup
+ * =======================
+ */
+
+ $effect-output: false !global;
+
+@mixin effect-setup{
+  body {
+    -webkit-backface-visibility: hidden;
+  }
+  .animated {
+    @include animation-duration(1s);
+    @include animation-fill-mode(both);
+  }
+}
+
+
+/**
+ * 2. effect
+ * ==========================
+ */
+
+// @include flash()
+// ----------------
+@mixin flash{
+  @if $effect-output == false {
+    @include effect-setup();
+    $effect-output: true !global;
+  }
+
+@-webkit-keyframes flash{
+  0%, 50%, 100% {opacity: 1;} 
+  25%, 75% {opacity: 0;}
+}
+@-moz-keyframes flash{
+  0%, 50%, 100% {opacity: 1;} 
+  25%, 75% {opacity: 0;}
+}
+@-o-keyframes flash{
+  0%, 50%, 100% {opacity: 1;} 
+  25%, 75% {opacity: 0;}
+}
+@keyframes flash{
+  0%, 50%, 100% {opacity: 1;} 
+  25%, 75% {opacity: 0;}
+}
+.animated.flash{@include animation-name(flash);}
+}
+
+
+// @include shake($offset: 15px)
+// --------------------
+@mixin shake( $offset: 15px){
+  @if $effect-output == false {
+    @include effect-setup();
+    $effect-output: true !global;
+  }
+
+@-webkit-keyframes shake{
+
+  0%, 100% {-webkit-transform: translateX(0);}
+  10%, 30%, 50%, 70%, 90% {-webkit-transform: translateX(-$offset);}
+  20%, 40%, 60%, 80% {-webkit-transform: translateX($offset);}
+}
+@-moz-keyframes shake{
+
+  0%, 100% {-moz-transform: translateX(0);}
+  10%, 30%, 50%, 70%, 90% {-moz-transform: translateX(-$offset);}
+  20%, 40%, 60%, 80% {-moz-transform: translateX($offset);}
+}
+@-o-keyframes shake{
+
+  0%, 100% {-o-transform: translateX(0);}
+  10%, 30%, 50%, 70%, 90% {-o-transform: translateX(-$offset);}
+  20%, 40%, 60%, 80% {-o-transform: translateX($offset);}
+}
+@keyframes shake{
+
+  0%, 100% {transform: translateX(0);}
+  10%, 30%, 50%, 70%, 90% {transform: translateX(-$offset);}
+  20%, 40%, 60%, 80% {transform: translateX($offset);}
+}
+.animated.shake{@include animation-name(shake);}
+}
+
+
+// tada
+@mixin tada( $scale-offset: 0.2, $degree: 3deg){
+  @if $effect-output == false {
+    @include effect-setup();
+    $effect-output: true !global;
+  }
+
+@-webkit-keyframes tada{
+
+  0% {-webkit-transform: scale(1);} 
+  10%, 20% {-webkit-transform: scale(1 - $scale-offset) rotate(-$degree);}
+  30%, 50%, 70%, 90% {-webkit-transform: scale(1 + $scale-offset) rotate($degree);}
+  40%, 60%, 80% {-webkit-transform: scale(1 + $scale-offset) rotate(-$degree);}
+  100% {-webkit-transform: scale(1) rotate(0);}
+}
+@-moz-keyframes tada{
+
+  0% {-moz-transform: scale(1);} 
+  10%, 20% {-moz-transform: scale(1 - $scale-offset) rotate(-$degree);}
+  30%, 50%, 70%, 90% {-moz-transform: scale(1 + $scale-offset) rotate($degree);}
+  40%, 60%, 80% {-moz-transform: scale(1 + $scale-offset) rotate(-$degree);}
+  100% {-moz-transform: scale(1) rotate(0);}
+}
+@-o-keyframes tada{
+
+  0% {-o-transform: scale(1);} 
+  10%, 20% {-o-transform: scale(1 - $scale-offset) rotate(-$degree);}
+  30%, 50%, 70%, 90% {-o-transform: scale(1 + $scale-offset) rotate($degree);}
+  40%, 60%, 80% {-o-transform: scale(1 + $scale-offset) rotate(-$degree);}
+  100% {-o-transform: scale(1) rotate(0);}
+}
+@keyframes tada{
+
+  0% {transform: scale(1);} 
+  10%, 20% {transform: scale(1 - $scale-offset) rotate(-$degree);}
+  30%, 50%, 70%, 90% {transform: scale(1 + $scale-offset) rotate($degree);}
+  40%, 60%, 80% {transform: scale(1 + $scale-offset) rotate(-$degree);}
+  100% {transform: scale(1) rotate(0);}
+}
+.animated.tada{@include animation-name(tada);}
+}
+
+// swing
+@mixin swing( $degree: 12deg){
+  @if $effect-output == false {
+    @include effect-setup();
+    $effect-output: true !global;
+  }
+
+@-webkit-keyframes swing{
+  @if($prefix == -webkit-){
+    20%, 40%, 60%, 80%, 100% { -webkit-transform-origin: top center; } }
+
+  20% { -webkit-transform: rotate($degree); } 
+  40% { -webkit-transform: rotate(-$degree / 3 * 2); }
+  60% { -webkit-transform: rotate($degree / 3); }  
+  80% { -webkit-transform: rotate(-$degree / 3); } 
+  100% { -webkit-transform: rotate(0deg); }
+}
+@-moz-keyframes swing{
+  @if($prefix == -webkit-){
+    20%, 40%, 60%, 80%, 100% { -webkit-transform-origin: top center; } }
+
+  20% { -moz-transform: rotate($degree); } 
+  40% { -moz-transform: rotate(-$degree / 3 * 2); }
+  60% { -moz-transform: rotate($degree / 3); }  
+  80% { -moz-transform: rotate(-$degree / 3); } 
+  100% { -moz-transform: rotate(0deg); }
+}
+@-o-keyframes swing{
+  @if($prefix == -webkit-){
+    20%, 40%, 60%, 80%, 100% { -webkit-transform-origin: top center; } }
+
+  20% { -o-transform: rotate($degree); } 
+  40% { -o-transform: rotate(-$degree / 3 * 2); }
+  60% { -o-transform: rotate($degree / 3); }  
+  80% { -o-transform: rotate(-$degree / 3); } 
+  100% { -o-transform: rotate(0deg); }
+}
+@keyframes swing{
+  @if($prefix == -webkit-){
+    20%, 40%, 60%, 80%, 100% { -webkit-transform-origin: top center; } }
+
+  20% { transform: rotate($degree); } 
+  40% { transform: rotate(-$degree / 3 * 2); }
+  60% { transform: rotate($degree / 3); }  
+  80% { transform: rotate(-$degree / 3); } 
+  100% { transform: rotate(0deg); }
+}
+.animated.swing{@include animation-name(swing);@include transform-origin(top center);}
+}
+
+// wobble
+@mixin wobble( $offset: 25%, $degree: 5deg){
+  @if $effect-output == false {
+    @include effect-setup();
+    $effect-output: true !global;
+  }
+
+@-webkit-keyframes wobble{
+  $step: $offset / 5;
+  $deg: $degree / 5;
+
+  0%  { -webkit-transform: translateX(0%); }
+  15% { -webkit-transform: translateX(-$offset) rotate(-$degree); }
+  30% { -webkit-transform: translateX($step * 4) rotate(4 * $deg); }
+  45% { -webkit-transform: translateX(-$step * 3) rotate(-3 * $deg); }
+  60% { -webkit-transform: translateX($step * 2) rotate(2 * $deg); }
+  75% { -webkit-transform: translateX(-$step) rotate(-1 * $deg); }
+  100% { -webkit-transform: translateX(0); }
+}
+@-moz-keyframes wobble{
+  $step: $offset / 5;
+  $deg: $degree / 5;
+
+  0%  { -moz-transform: translateX(0%); }
+  15% { -moz-transform: translateX(-$offset) rotate(-$degree); }
+  30% { -moz-transform: translateX($step * 4) rotate(4 * $deg); }
+  45% { -moz-transform: translateX(-$step * 3) rotate(-3 * $deg); }
+  60% { -moz-transform: translateX($step * 2) rotate(2 * $deg); }
+  75% { -moz-transform: translateX(-$step) rotate(-1 * $deg); }
+  100% { -moz-transform: translateX(0); }
+}
+@-o-keyframes wobble{
+  $step: $offset / 5;
+  $deg: $degree / 5;
+
+  0%  { -o-transform: translateX(0%); }
+  15% { -o-transform: translateX(-$offset) rotate(-$degree); }
+  30% { -o-transform: translateX($step * 4) rotate(4 * $deg); }
+  45% { -o-transform: translateX(-$step * 3) rotate(-3 * $deg); }
+  60% { -o-transform: translateX($step * 2) rotate(2 * $deg); }
+  75% { -o-transform: translateX(-$step) rotate(-1 * $deg); }
+  100% { -o-transform: translateX(0); }
+}
+@keyframes wobble{
+  $step: $offset / 5;
+  $deg: $degree / 5;
+
+  0%  { transform: translateX(0%); }
+  15% { transform: translateX(-$offset) rotate(-$degree); }
+  30% { transform: translateX($step * 4) rotate(4 * $deg); }
+  45% { transform: translateX(-$step * 3) rotate(-3 * $deg); }
+  60% { transform: translateX($step * 2) rotate(2 * $deg); }
+  75% { transform: translateX(-$step) rotate(-1 * $deg); }
+  100% { transform: translateX(0); }
+}
+.animated.wobble{@include animation-name(wobble);}
+}
+// wiggle
+@mixin wiggle( $degree: 12deg){
+  @if $effect-output == false {
+    @include effect-setup();
+    $effect-output: true !global;
+  }
+
+@-webkit-keyframes wiggle{
+  $deg: $degree / 6;
+  0%  { -webkit-transform: skewX($deg * 6) }
+  15% { -webkit-transform: skewX(-$deg * 5); }
+  30% { -webkit-transform: skewX(4 * $deg); }
+  45% { -webkit-transform: skewX(-3 * $deg); }
+  60% { -webkit-transform: skewX(2 * $deg); }
+  75% { -webkit-transform: skewX(-1 * $deg); }
+  100% { -webkit-transform: skewX(0deg)}
+}
+@-moz-keyframes wiggle{
+  $deg: $degree / 6;
+  0%  { -moz-transform: skewX($deg * 6) }
+  15% { -moz-transform: skewX(-$deg * 5); }
+  30% { -moz-transform: skewX(4 * $deg); }
+  45% { -moz-transform: skewX(-3 * $deg); }
+  60% { -moz-transform: skewX(2 * $deg); }
+  75% { -moz-transform: skewX(-1 * $deg); }
+  100% { -moz-transform: skewX(0deg)}
+}
+@-o-keyframes wiggle{
+  $deg: $degree / 6;
+  0%  { -o-transform: skewX($deg * 6) }
+  15% { -o-transform: skewX(-$deg * 5); }
+  30% { -o-transform: skewX(4 * $deg); }
+  45% { -o-transform: skewX(-3 * $deg); }
+  60% { -o-transform: skewX(2 * $deg); }
+  75% { -o-transform: skewX(-1 * $deg); }
+  100% { -o-transform: skewX(0deg)}
+}
+@keyframes wiggle{
+  $deg: $degree / 6;
+  0%  { transform: skewX($deg * 6) }
+  15% { transform: skewX(-$deg * 5); }
+  30% { transform: skewX(4 * $deg); }
+  45% { transform: skewX(-3 * $deg); }
+  60% { transform: skewX(2 * $deg); }
+  75% { transform: skewX(-1 * $deg); }
+  100% { transform: skewX(0deg)}
+}
+.animated.wiggle{@include animation-name(wiggle);}
+}
+
+// pulse
+// --------------------------
+@mixin pulse( $scale-offset:0.1){
+  @if $effect-output == false {
+    @include effect-setup();
+    $effect-output: true !global;
+  }
+
+@-webkit-keyframes pulse{
+  0% { -webkit-transform: scale(1); }  
+  50% { -webkit-transform: scale(1 + $scale-offset); }
+  100% { -webkit-transform: scale(1); }
+}
+@-moz-keyframes pulse{
+  0% { -moz-transform: scale(1); }  
+  50% { -moz-transform: scale(1 + $scale-offset); }
+  100% { -moz-transform: scale(1); }
+}
+@-o-keyframes pulse{
+  0% { -o-transform: scale(1); }  
+  50% { -o-transform: scale(1 + $scale-offset); }
+  100% { -o-transform: scale(1); }
+}
+@keyframes pulse{
+  0% { transform: scale(1); }  
+  50% { transform: scale(1 + $scale-offset); }
+  100% { transform: scale(1); }
+}
+.animated.pulse{@include animation-name(pulse);}
+}
+
+// flip
+// --------------------------
+@mixin flip( $perspect: 300px){
+  @if $effect-output == false {
+    @include effect-setup();
+    $effect-output: true !global;
+  }
+
+@-webkit-keyframes flip{
+
+  0% {
+    -webkit-transform: perspective($perspect) rotateY(0);
+    -webkit-animation-timing-function: ease-out; }
+  40% {
+    -webkit-transform: perspective($perspect) translateZ(100px) rotateY(170deg);
+    -webkit-animation-timing-function: ease-out; }
+  50% {
+    -webkit-transform: perspective($perspect) translateZ(100px ) rotateY(190deg) scale(1);
+    -webkit-animation-timing-function: ease-in; }
+  80% {
+    -webkit-transform: perspective($perspect) rotateY(360deg) scale(.95);
+    -webkit-animation-timing-function: ease-in; }
+  100% {
+    -webkit-transform: perspective($perspect) scale(1);
+    -webkit-animation-timing-function: ease-in; }
+}
+@-moz-keyframes flip{
+
+  0% {
+    -moz-transform: perspective($perspect) rotateY(0);
+    -moz-animation-timing-function: ease-out; }
+  40% {
+    -moz-transform: perspective($perspect) translateZ(100px) rotateY(170deg);
+    -moz-animation-timing-function: ease-out; }
+  50% {
+    -moz-transform: perspective($perspect) translateZ(100px ) rotateY(190deg) scale(1);
+    -moz-animation-timing-function: ease-in; }
+  80% {
+    -moz-transform: perspective($perspect) rotateY(360deg) scale(.95);
+    -moz-animation-timing-function: ease-in; }
+  100% {
+    -moz-transform: perspective($perspect) scale(1);
+    -moz-animation-timing-function: ease-in; }
+}
+@-o-keyframes flip{
+
+  0% {
+    -o-transform: perspective($perspect) rotateY(0);
+    -o-animation-timing-function: ease-out; }
+  40% {
+    -o-transform: perspective($perspect) translateZ(100px) rotateY(170deg);
+    -o-animation-timing-function: ease-out; }
+  50% {
+    -o-transform: perspective($perspect) translateZ(100px ) rotateY(190deg) scale(1);
+    -o-animation-timing-function: ease-in; }
+  80% {
+    -o-transform: perspective($perspect) rotateY(360deg) scale(.95);
+    -o-animation-timing-function: ease-in; }
+  100% {
+    -o-transform: perspective($perspect) scale(1);
+    -o-animation-timing-function: ease-in; }
+}
+@keyframes flip{
+
+  0% {
+    transform: perspective($perspect) rotateY(0);
+    animation-timing-function: ease-out; }
+  40% {
+    transform: perspective($perspect) translateZ(100px) rotateY(170deg);
+    animation-timing-function: ease-out; }
+  50% {
+    transform: perspective($perspect) translateZ(100px ) rotateY(190deg) scale(1);
+    animation-timing-function: ease-in; }
+  80% {
+    transform: perspective($perspect) rotateY(360deg) scale(.95);
+    animation-timing-function: ease-in; }
+  100% {
+    transform: perspective($perspect) scale(1);
+    animation-timing-function: ease-in; }
+}
+.animated.flip{@include animation-name(flip);// !import 可以再声明中，但是在mcss中无法传入函数(它不是一个值), 这里我们用Text转义
+  @include backface-visibility(visible t('!important'));}
+}
+
+
+
+
+// FadeIn
+
+@mixin fadeIn{
+  @if $effect-output == false {
+    @include effect-setup();
+    $effect-output: true !global;
+  }
+
+@-webkit-keyframes fadeIn{
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
+@-moz-keyframes fadeIn{
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
+@-o-keyframes fadeIn{
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
+@keyframes fadeIn{
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
+.animated.fadeIn{@include animation-name(fadeIn);}
+}
+
+@mixin fadeOut{
+  @if $effect-output == false {
+    @include effect-setup();
+    $effect-output: true !global;
+  }
+
+@-webkit-keyframes fadeOut{
+  0% {opacity: 1}
+  100% {opacity: 0}
+}
+@-moz-keyframes fadeOut{
+  0% {opacity: 1}
+  100% {opacity: 0}
+}
+@-o-keyframes fadeOut{
+  0% {opacity: 1}
+  100% {opacity: 0}
+}
+@keyframes fadeOut{
+  0% {opacity: 1}
+  100% {opacity: 0}
+}
+.animated.fadeOut{@include animation-name(fadeOut);}
+}
+
+@mixin fadeInX( $offset: 30px){
+  @if $effect-output == false {
+    @include effect-setup();
+    $effect-output: true !global;
+  }
+
+@-webkit-keyframes fadeInX{
+  0% {opacity: 0; -webkit-transform: translateX($offset); }
+  100% {opacity: 1; -webkit-transform: translateX(0); }
+}
+@-moz-keyframes fadeInX{
+  0% {opacity: 0; -moz-transform: translateX($offset); }
+  100% {opacity: 1; -moz-transform: translateX(0); }
+}
+@-o-keyframes fadeInX{
+  0% {opacity: 0; -o-transform: translateX($offset); }
+  100% {opacity: 1; -o-transform: translateX(0); }
+}
+@keyframes fadeInX{
+  0% {opacity: 0; transform: translateX($offset); }
+  100% {opacity: 1; transform: translateX(0); }
+}
+.animated.fadeInX{@include animation-name(fadeInX);}
+}
+@mixin fadeInY( $offset: 30px){
+  @if $effect-output == false {
+    @include effect-setup();
+    $effect-output: true !global;
+  }
+
+@-webkit-keyframes fadeInY{
+  0% {opacity: 0; -webkit-transform: translateY($offset); }
+  100% {opacity: 1; -webkit-transform: translateY(0); }
+}
+@-moz-keyframes fadeInY{
+  0% {opacity: 0; -moz-transform: translateY($offset); }
+  100% {opacity: 1; -moz-transform: translateY(0); }
+}
+@-o-keyframes fadeInY{
+  0% {opacity: 0; -o-transform: translateY($offset); }
+  100% {opacity: 1; -o-transform: translateY(0); }
+}
+@keyframes fadeInY{
+  0% {opacity: 0; transform: translateY($offset); }
+  100% {opacity: 1; transform: translateY(0); }
+}
+.animated.fadeInY{@include animation-name(fadeInY);}
+}
+
+@mixin fadeOutX( $offset: 30px){
+  @if $effect-output == false {
+    @include effect-setup();
+    $effect-output: true !global;
+  }
+
+@-webkit-keyframes fadeOutX{
+  0% {opacity: 1; -webkit-transform: translateX(0); }
+  100% {opacity: 0; -webkit-transform: translateX($offset); }
+}
+@-moz-keyframes fadeOutX{
+  0% {opacity: 1; -moz-transform: translateX(0); }
+  100% {opacity: 0; -moz-transform: translateX($offset); }
+}
+@-o-keyframes fadeOutX{
+  0% {opacity: 1; -o-transform: translateX(0); }
+  100% {opacity: 0; -o-transform: translateX($offset); }
+}
+@keyframes fadeOutX{
+  0% {opacity: 1; transform: translateX(0); }
+  100% {opacity: 0; transform: translateX($offset); }
+}
+.animated.fadeOutX{@include animation-name(fadeOutX);}
+}
+
+@mixin fadeOutY( $offset: 30px){
+  @if $effect-output == false {
+    @include effect-setup();
+    $effect-output: true !global;
+  }
+
+@-webkit-keyframes fadeOutY{
+  0% {opacity: 1; -webkit-transform: translateY(0); }
+  100% {opacity: 0; -webkit-transform: translateY($offset); }
+}
+@-moz-keyframes fadeOutY{
+  0% {opacity: 1; -moz-transform: translateY(0); }
+  100% {opacity: 0; -moz-transform: translateY($offset); }
+}
+@-o-keyframes fadeOutY{
+  0% {opacity: 1; -o-transform: translateY(0); }
+  100% {opacity: 0; -o-transform: translateY($offset); }
+}
+@keyframes fadeOutY{
+  0% {opacity: 1; transform: translateY(0); }
+  100% {opacity: 0; transform: translateY($offset); }
+}
+.animated.fadeOutY{@include animation-name(fadeOutY);}
+}
+
+
+// @include bounce($height)
+// ------------------
+@mixin bounce( $height:40px){
+  @if $effect-output == false {
+    @include effect-setup();
+    $effect-output: true !global;
+  }
+
+@-webkit-keyframes bounce{
+
+  0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);}
+  40% {-webkit-transform: translateY(-$height);}
+  60% {-webkit-transform: translateY(-$height / 2);}
+}
+@-moz-keyframes bounce{
+
+  0%, 20%, 50%, 80%, 100% {-moz-transform: translateY(0);}
+  40% {-moz-transform: translateY(-$height);}
+  60% {-moz-transform: translateY(-$height / 2);}
+}
+@-o-keyframes bounce{
+
+  0%, 20%, 50%, 80%, 100% {-o-transform: translateY(0);}
+  40% {-o-transform: translateY(-$height);}
+  60% {-o-transform: translateY(-$height / 2);}
+}
+@keyframes bounce{
+
+  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+  40% {transform: translateY(-$height);}
+  60% {transform: translateY(-$height / 2);}
+}
+.animated.bounce{@include animation-name(bounce);}
+}
+
+@mixin bounceIn{
+  @if $effect-output == false {
+    @include effect-setup();
+    $effect-output: true !global;
+  }
+
+@-webkit-keyframes bounceIn{
+
+  0% {opacity: 0; -webkit-transform: scale(.3)}
+  50% {opacity: 1; -webkit-transform: scale(1.05)}
+  70% {-webkit-transform: scale(.9)}
+  100% {-webkit-transform: scale(1)}
+
+}
+@-moz-keyframes bounceIn{
+
+  0% {opacity: 0; -moz-transform: scale(.3)}
+  50% {opacity: 1; -moz-transform: scale(1.05)}
+  70% {-moz-transform: scale(.9)}
+  100% {-moz-transform: scale(1)}
+
+}
+@-o-keyframes bounceIn{
+
+  0% {opacity: 0; -o-transform: scale(.3)}
+  50% {opacity: 1; -o-transform: scale(1.05)}
+  70% {-o-transform: scale(.9)}
+  100% {-o-transform: scale(1)}
+
+}
+@keyframes bounceIn{
+
+  0% {opacity: 0; transform: scale(.3)}
+  50% {opacity: 1; transform: scale(1.05)}
+  70% {transform: scale(.9)}
+  100% {transform: scale(1)}
+
+}
+.animated.bounceIn{@include animation-name(bounceIn);}
+}
+
+// $bounceOut
+// -----------------------
+@mixin bounceOut{
+  @if $effect-output == false {
+    @include effect-setup();
+    $effect-output: true !global;
+  }
+
+@-webkit-keyframes bounceOut{
+  0% {-webkit-transform: scale(1) }
+  25% {-webkit-transform: scale(.95) }
+  50% {opacity: 1; -webkit-transform: scale(1.1) }
+  100% {opacity: 0; -webkit-transform: scale(.3) }
+
+}
+@-moz-keyframes bounceOut{
+  0% {-moz-transform: scale(1) }
+  25% {-moz-transform: scale(.95) }
+  50% {opacity: 1; -moz-transform: scale(1.1) }
+  100% {opacity: 0; -moz-transform: scale(.3) }
+
+}
+@-o-keyframes bounceOut{
+  0% {-o-transform: scale(1) }
+  25% {-o-transform: scale(.95) }
+  50% {opacity: 1; -o-transform: scale(1.1) }
+  100% {opacity: 0; -o-transform: scale(.3) }
+
+}
+@keyframes bounceOut{
+  0% {transform: scale(1) }
+  25% {transform: scale(.95) }
+  50% {opacity: 1; transform: scale(1.1) }
+  100% {opacity: 0; transform: scale(.3) }
+
+}
+.animated.bounceOut{@include animation-name(bounceOut);}
+}
+
+
+
+
+
+@mixin rotateIn( $start-deg: -360deg, $start-scale: 1.2){
+  @if $effect-output == false {
+    @include effect-setup();
+    $effect-output: true !global;
+  }
+
+@-webkit-keyframes rotateIn{
+  0% {
+    opacity: 0;
+    -webkit-transform: rotate($start-deg) scale($start-scale);
+  }
+  100% {
+    -webkit-transform: rotate(0) scale(1);
+    opacity: 1
+  }
+}
+@-moz-keyframes rotateIn{
+  0% {
+    opacity: 0;
+    -moz-transform: rotate($start-deg) scale($start-scale);
+  }
+  100% {
+    -moz-transform: rotate(0) scale(1);
+    opacity: 1
+  }
+}
+@-o-keyframes rotateIn{
+  0% {
+    opacity: 0;
+    -o-transform: rotate($start-deg) scale($start-scale);
+  }
+  100% {
+    -o-transform: rotate(0) scale(1);
+    opacity: 1
+  }
+}
+@keyframes rotateIn{
+  0% {
+    opacity: 0;
+    transform: rotate($start-deg) scale($start-scale);
+  }
+  100% {
+    transform: rotate(0) scale(1);
+    opacity: 1
+  }
+}
+.animated.rotateIn{@include animation-name(rotateIn);}
+}
+
+@mixin rotateOut( $end-deg: -360deg, $end-scale: 0.8){
+  @if $effect-output == false {
+    @include effect-setup();
+    $effect-output: true !global;
+  }
+
+@-webkit-keyframes rotateOut{
+  0% {
+    -webkit-transform: rotate(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: rotate($end-deg) scale($end-scale);
+    opacity: 0;
+  }
+}
+@-moz-keyframes rotateOut{
+  0% {
+    -moz-transform: rotate(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    -moz-transform: rotate($end-deg) scale($end-scale);
+    opacity: 0;
+  }
+}
+@-o-keyframes rotateOut{
+  0% {
+    -o-transform: rotate(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    -o-transform: rotate($end-deg) scale($end-scale);
+    opacity: 0;
+  }
+}
+@keyframes rotateOut{
+  0% {
+    transform: rotate(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate($end-deg) scale($end-scale);
+    opacity: 0;
+  }
+}
+.animated.rotateOut{@include animation-name(rotateOut);}
+}
+
+.animated {
+    $animation-duration: 0.2s;
+}
+
+.animated {
+    @include animation-duration(0.2s);
+}
+.modal_animated {
+  @include animation-duration(0.3s);
+}
+
+@keyframes zoomOut {
+  from {  opacity: 1;  }
+  50% {  opacity: 0;  transform: scale3d(.3, .3, .3);  }
+  to {  opacity: 0;  }
+}
+.zoomOut {  animation-name: zoomOut;  }
+.modal_zoomOut .modal_dialog {  animation-name: zoomOut;  }
+
+@keyframes zoomIn {
+  from {  opacity: 0;  transform: scale3d(.3, .3, .3);  }
+  50% {  opacity: 1;  }
+}
+.zoomIn {  animation-name: zoomIn;  }

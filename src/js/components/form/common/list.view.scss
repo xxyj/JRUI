@@ -1,0 +1,87 @@
+// Name:            ListView
+// Description:     列表视图
+// Author:          sensen(rainforest92@126.com)
+// ========================================================================
+
+
+
+// Component:       `m-listview`
+// ========================================================================
+
+.m-listview {
+    @extend .f-lsn;
+    @include box-sizing(border-box);
+    @include user-select(none);
+
+    > li {
+        // @extend .f-toe;
+        cursor: pointer;
+        position: relative;
+    }
+
+    > li:hover {}
+
+    > li.z-sel {}
+
+    > li.z-dis {
+        cursor: not-allowed;
+        background: none;
+    }
+}
+
+.m-listview.z-dis {
+    > li {
+        cursor: not-allowed;
+        background: none;
+    }
+}
+
+
+
+//////////////////
+.m-listview {
+    padding: 5px 0;
+    background: $u-formctrl_background;
+    color: $u-formctrl_color;
+    @include border(#eee);
+    border-top: none;
+    > li {
+        font-size: 12px;
+        color: #333333;
+        padding: 7px 9px 7px 9px;
+        margin: 6px 0;
+        line-height: 18px;
+    }
+
+    > li:hover {
+        background: $u-formctrl_item-hover_background;
+        color: $u-formctrl_item-hover_color;
+    }
+
+    > li.z-sel {
+        background: $brand-primary;
+        color: $u-formctrl_item-selected_color;
+    }
+
+    > li.z-dis {
+        background: none;
+        color: $u-formctrl-disabled_color;
+    }
+
+    > li.z-divider {
+        margin: 9px 0;
+        padding: 0;
+        height: 1px;
+        background: #e5e5e5;
+        overflow: hidden;
+    }
+}
+
+.m-listview.z-dis {
+    background: $u-formctrl-disabled_background;
+
+    > li {
+        background: $u-formctrl-disabled_background;
+        color: $u-formctrl-disabled_color;
+    }
+}
