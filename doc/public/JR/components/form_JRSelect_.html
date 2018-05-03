@@ -62,56 +62,10 @@
                         
                             <li>
                                 <h3>
-                                    布局
-                                </h3>
-                            </li>
-                            
-                                
-                                    <li>
-                                        <a href="/JR/components/layout_JRCard_.html" class="sidebar-link">
-                                            卡片
-                                                JRCard
-                                        </a>
-                                    </li>
-                                    
-                    
-                        
-                                
-                                    <li>
-                                        <a href="/JR/components/layout_JRContainer_.html" class="sidebar-link new">
-                                            容器布局
-                                                JRContainer
-                                        </a>
-                                    </li>
-                                    
-                    
-                        
-                                
-                                    <li>
-                                        <a href="/JR/components/layout_JRTable_.html" class="sidebar-link">
-                                            表格
-                                                JRTable
-                                        </a>
-                                    </li>
-                                    
-                    
-                        
-                            <li>
-                                <h3>
                                     表单
                                 </h3>
                             </li>
                             
-                                
-                                    <li>
-                                        <a href="/JR/components/form_JRButton_.html" class="sidebar-link">
-                                            按钮
-                                                JRButton
-                                        </a>
-                                    </li>
-                                    
-                    
-                        
                                 
                                     <li>
                                         <a href="/JR/components/form_JRCheck_.html" class="sidebar-link">
@@ -533,7 +487,7 @@
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-select</span> <span class="attr">service</span>=<span class="string">&#123;@(this.service)&#125;</span> <span class="attr">value</span>=<span class="string">"2"</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">service</span>: &#123;</div><div class="line">        <span class="attr">key</span>:<span class="string">'searchValue'</span>,</div><div class="line">        <span class="attr">getList</span>: <span class="function"><span class="keyword">function</span>(<span class="params">params, success</span>) </span>&#123;</div><div class="line">            <span class="keyword">this</span>.request(&#123;</div><div class="line">                <span class="attr">url</span>: <span class="string">'../../data/list.json'</span>,</div><div class="line">                <span class="attr">method</span>: <span class="string">'get'</span>,</div><div class="line">                <span class="attr">type</span>: <span class="string">'json'</span>,</div><div class="line">                <span class="attr">data</span>: params,</div><div class="line">                <span class="attr">success</span>: <span class="function"><span class="keyword">function</span>(<span class="params">json</span>) </span>&#123;</div><div class="line">                     <span class="keyword">this</span>.$update(<span class="string">'source'</span>, json.result);</div><div class="line">                 &#125;.bind(<span class="keyword">this</span>)</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">service</span>: &#123;</div><div class="line">        <span class="attr">key</span>:<span class="string">'searchValue'</span>,</div><div class="line">        <span class="attr">getList</span>: <span class="function"><span class="keyword">function</span>(<span class="params">params, success</span>) </span>&#123;</div><div class="line">            <span class="keyword">this</span>.$update(<span class="string">'source'</span>, [<span class="string">'a'</span>,<span class="string">'adv'</span>,<span class="string">'3ds'</span>,<span class="string">'erd'</span>,<span class="string">'ssa'</span>,<span class="string">'ddf'</span>,<span class="string">'dd'</span>,<span class="string">'d'</span>,<span class="string">'33d'</span>,<span class="string">'10'</span>,<span class="string">'11'</span>].filter(<span class="function"><span class="params">item</span>=&gt;</span>&#123;</div><div class="line">                         <span class="keyword">return</span> item.indexOf(params.searchValue)!==<span class="number">-1</span></div><div class="line">                     &#125;));</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
 <h3 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h3><!-- demo_start -->
 <div class="m-example"></div>
@@ -1045,15 +999,9 @@ var component = new JRUI.Component({
     service: {
         key:'searchValue',
         getList: function(params, success) {
-            this.request({
-                url: '../../data/list.json',
-                method: 'get',
-                type: 'json',
-                data: params,
-                success: function(json) {
-                     this.$update('source', json.result);
-                 }.bind(this)
-            });
+            this.$update('source', ['a','adv','3ds','erd','ssa','ddf','dd','d','33d','10','11'].filter(item=>{
+                         return item.indexOf(params.searchValue)!==-1
+                     }));
         }
     }
 });

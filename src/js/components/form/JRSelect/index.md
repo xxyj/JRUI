@@ -192,15 +192,9 @@ var component = new JRUI.Component({
     service: {
         key:'searchValue',
         getList: function(params, success) {
-            this.request({
-                url: '../../data/list.json',
-                method: 'get',
-                type: 'json',
-                data: params,
-                success: function(json) {
-                     this.$update('source', json.result);
-                 }.bind(this)
-            });
+            this.$update('source', ['a','adv','3ds','erd','ssa','ddf','dd','d','33d','10','11'].filter(item=>{
+                         return item.indexOf(params.searchValue)!==-1
+                     }));
         }
     }
 });

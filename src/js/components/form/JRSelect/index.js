@@ -343,8 +343,9 @@ const JRSelect = Dropdown.extend({
   },
   toggle(open, e) {
     e && e.stopPropagation();
-    const data = this.data;
-    (data.canSearch || data.service) && this.clearSearchValue();
+    // 解决查询的时候数据会被清空的问题
+    // const data = this.data;
+    // (data.canSearch || data.service) && this.clearSearchValue();
     this.supr(open);
   },
   validate(on) {
