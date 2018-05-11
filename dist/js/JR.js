@@ -29102,6 +29102,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var typeMap = {
 	  'image/*': 'image',
+	  '.webp': 'image',
+	  '.bmp': 'image',
 	  '.jpg': 'image',
 	  '.jpeg': 'image',
 	  '.gif': 'image',
