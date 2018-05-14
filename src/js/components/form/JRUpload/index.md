@@ -98,7 +98,7 @@ var component = new JRUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<jr-upload action='https://nos.kaolafed.com/upload' num-max={2}></jr-upload>
+<jr-upload deleteOnly={true} action='https://nos.kaolafed.com/upload' num-max={1}></jr-upload>
 ```
 <!-- demo_end -->
 

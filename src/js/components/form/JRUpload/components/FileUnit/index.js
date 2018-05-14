@@ -19,6 +19,7 @@ const FileUnit = Component.extend({
       name: '',
       readonly: false,
       data: {},
+      deleteOnly: false,
     });
 
     _.extend(data, {
@@ -172,11 +173,11 @@ const FileUnit = Component.extend({
     const data = this.data;
     // 如果url不存在，则不允许预览
     if (data.url) {
-      var emitItem = {
+      const emitItem = {
         sender: this,
         event: e,
         file: data.file,
-        status: data.status
+        status: data.status,
       };
       this.$emit('preview', emitItem);
     }
