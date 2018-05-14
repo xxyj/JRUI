@@ -1,11 +1,7 @@
 <div class="m-file-unit">
     <div class="m-content">
-        {#if type === 'image' && url && !deleteOnly)}
-            <div class="m-img-wrapper" on-click={this.onPreview()}>
-                <img class="u-img" src={url}/>
-            </div>
-        {#elseif type === 'image' && (!url || deleteOnly)}
-            <div class="m-img-wrapper" style="cursor: auto">
+        {#if type === 'image'}
+            <div class="m-img-wrapper" on-click={this.onPreview()} r-style={ {cursor: url?'zoom-in':'auto'} }>
                 <img class="u-img" src={url}/>
             </div>
         {#elseif type === 'unknown'}
@@ -28,7 +24,7 @@
                         </span>
                     </span>
                 </span>
-            {#elseif status === 'success' && url && !deleteOnly}
+            {#elseif status === 'success' && url}
                 <span class="u-uploaded">
                     <a class="u-uploaded-zone" href={url} download={filename}>{this.$trans('DOWNLOAD_FILE')}<i class="u-icon u-icon-export"></i></a>
                 </span>

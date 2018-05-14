@@ -19,7 +19,6 @@ const FileUnit = Component.extend({
       name: '',
       readonly: false,
       data: {},
-      deleteOnly: false,
     });
 
     _.extend(data, {
