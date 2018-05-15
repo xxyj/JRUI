@@ -103,6 +103,15 @@ var component = new JRUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
+### 文件上传后不提供放大和下载功能
+<div class="m-example"></div>
+
+```xml
+<jr-upload closeonly={true} action='https://nos.kaolafed.com/upload' num-max={2}></jr-upload>
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
 ### 行布局
 <div class="m-example"></div>
 

@@ -34,6 +34,7 @@ const tpl = require('./index.html');
  * @param {string}     [options.data.max-size=1GB]         => 可选，上传文件大小的最大允许值, 支持数值大小以及KB,MB,GB为单元的指定
  * @param {boolean}    [options.data.readonly=false]       => 可选，是否开启预览模式，可选值true/false，true预览模式，只能预览和下载图片，
  *                                                             默认false，允许上传和删除图片
+ * @param {boolean}    [options.data.closeonly=false]       => 可选，是否不允许放大预览和下载
  * @param {boolean}    [options.data.hideTip=false]        => 是否显示校验错误信息，默认false显示
  * @param {number}     [options.data.image-width]          => 可选，指定上传图片文件的宽度, 值为数值，单位为px，如800
  * @param {number}     [options.data.image-height]         => 可选，指定上传图片文件的高度, 值为数值，单位为px, 如600
@@ -69,6 +70,7 @@ const JRUpload = Component.extend({
       numPerline: Infinity,
       maxSize: Config.sizeMap.GB,
       readonly: false,
+      closeonly: false,
       hideTip: false,
       imageWidth: Infinity,
       imageHeight: Infinity,
