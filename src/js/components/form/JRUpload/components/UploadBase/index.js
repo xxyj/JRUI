@@ -36,6 +36,7 @@ const JRImagePreview = require('../../../../widget/JRImagePreview');
  * @param {number}     [options.data.max-size]       => 可选，上传文件大小的最大允许值, 支持数值大小以及KB,MB,GB为单元的指定
  * @param {boolean}    [options.data.readonly]       => 可选，是否开启预览模式，可选值true/false，true预览模式，只能预览和下载图片，
  *                                                       默认false，允许上传和删除图片
+ * @param {boolean}    [options.data.closeonly=false]       => 可选，是否不允许放大预览和下载
  * @param {number}     [options.data.image-width]    => 可选，指定上传图片文件的宽度, 值为数值，单位为px，如800
  * @param {number}     [options.data.image-height]   => 可选，指定上传图片文件的高度, 值为数值，单位为px, 如600
  * @param {string}     [options.data.image-scale]    => 可选，指定上传图片文件的宽高比, 值为冒号分隔的宽高比例字符串，如'4:3'
@@ -61,6 +62,7 @@ const UploadBase = Component.extend({
       numPerline: Infinity,
       maxSize: Config.sizeMap.GB,
       readonly: false,
+      closeonly: false,
       imageWidth: Infinity,
       imageHeight: Infinity,
       imageScale: '',
@@ -444,6 +446,7 @@ const UploadBase = Component.extend({
       url: opts.action,
       name: opts.name,
       readonly: opts.readonly,
+      closeonly: opts.closeonly,
       data: opts.data,
     };
   },
